@@ -3,7 +3,8 @@ import pandas as pd
 from text2ipa import get_IPA
 from gtts import gTTS
 
-# dictionary = pd.read_csv('/data/dictionary.csv')
+dictionary = pd.read_csv('https://github.com/nhathuyle2002/Streamlit/blob/main/data/dictionary.csv', nrows=1)
+st.dataframe(dictionary)
 
 def to_american_IPA(str):
     return get_IPA(text=str, language='am')
@@ -20,7 +21,7 @@ def to_britain_sound(str):
     return open("sound\en-uk.mp3", "rb").read()
 
 
-str = st.text_input("Enter word(s)")
+str = st.text_input("Enter word(s)", key=1)
 if str != "":
     col1, col2 = st.columns(2)
     with col1:
@@ -29,4 +30,5 @@ if str != "":
     with col2:
         st.write("britain IPA: ", to_britain_IPA(str))
         st.audio(to_britain_sound(str))
+
 
