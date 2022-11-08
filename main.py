@@ -3,7 +3,7 @@ import pandas as pd
 from text2ipa import get_IPA
 from gtts import gTTS
 
-dictionary = pd.read_csv('/data/dictionary.csv')
+# dictionary = pd.read_csv('/data/dictionary.csv')
 
 def to_american_IPA(str):
     return get_IPA(text=str, language='am')
